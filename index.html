@@ -497,7 +497,8 @@ p { margin: 0; max-width: 62ch; }
     <div class="slide-head">
       <div class="eyebrow"><span class="tick"></span>The problem</div>
       <h2>A failed test isn't the end of the story.</h2>
-      <p class="lede">Utah requires an emissions inspection in five counties.</p>
+      <p class="lede">Utah requires an emissions inspection in five counties. You may test in any
+         of the five. You register where you live.</p>
     </div>
 
     <div class="cols">
@@ -506,24 +507,24 @@ p { margin: 0; max-width: 62ch; }
           <span class="badge">01</span>
           <div>
             <div class="mode-t">It gets registered anyway.</div>
-            <div class="mode-d">Failed in Weber. Then registered with no new passing
-              emission test.</div>
+            <div class="mode-d">Failed in Davis. Then registered in Davis, with no new
+              passing emission test.</div>
           </div>
         </li>
         <li style="--tone: var(--high)">
           <span class="badge">02</span>
           <div>
-            <div class="mode-t">It "passes" somewhere else.</div>
-            <div class="mode-d">Fails at one station, then passes at a station in a different
-              county days later.</div>
+            <div class="mode-t">It moves, on paper.</div>
+            <div class="mode-d">Fails in Davis, then renews under a Tooele ZIP, where no test
+              is required, while every test it ever took was in Davis.</div>
           </div>
         </li>
         <li style="--tone: var(--medium)">
           <span class="badge">03</span>
           <div>
             <div class="mode-t">It simply disappears.</div>
-            <div class="mode-d">A failed emission test, and then the vehicle disappears.
-              It falls out of the record entirely.</div>
+            <div class="mode-d">A failed emission test, and then nothing. Rarer than it looks,
+              once central and online renewals are accounted for.</div>
           </div>
         </li>
       </ul>
@@ -531,33 +532,35 @@ p { margin: 0; max-width: 62ch; }
       <div class="card">
         <div class="card-label">Why it stayed invisible</div>
         <p style="font-size: var(--step--1); color: var(--ink-2); line-height: 1.5;">
-          Inspection data and registration data live in separate systems.
+          Inspection data and registration data live in separate systems. A DMV row with no
+          test attached reads <span class="mono">9999-12-31</span>, which is not the same
+          thing as never tested.
         </p>
         <svg class="diagram" viewBox="0 0 460 190" role="img"
-             aria-label="A vehicle fails inspection in Weber County, then passes four days later at a station in Davis County, the adjacent inspection county.">
-          <!-- county 1 -->
+             aria-label="A vehicle fails inspection in Davis County, one of the five inspection counties, then renews its registration seven days later under a Tooele County ZIP code, where no inspection is required, though every test in its history was taken in Davis.">
+          <!-- where it was tested -->
           <rect x="4" y="46" width="150" height="76" rx="3" fill="#FBEDED" stroke="#B71C1C" stroke-width="1"/>
-          <text class="dg-label" x="18" y="68">I/M County</text>
-          <text class="dg-county" x="18" y="90">Weber</text>
+          <text class="dg-label" x="18" y="68">Tested in</text>
+          <text class="dg-county" x="18" y="90">Davis</text>
           <text class="dg-verdict" x="18" y="110" fill="#B71C1C">FAIL · MAR 04</text>
 
-          <!-- county 2 -->
+          <!-- where it was registered -->
           <rect x="306" y="46" width="150" height="76" rx="3" fill="#FFF6E6" stroke="#E08A00" stroke-width="1"/>
-          <text class="dg-label" x="320" y="68">Next I/M county</text>
-          <text class="dg-county" x="320" y="90">Davis</text>
-          <text class="dg-verdict" x="320" y="110" fill="#8A5300">PASS · MAR 08</text>
+          <text class="dg-label" x="320" y="68">Renewed under</text>
+          <text class="dg-county" x="320" y="90">Tooele ZIP</text>
+          <text class="dg-verdict" x="320" y="110" fill="#8A5300">REG · MAR 11</text>
 
           <!-- arc -->
           <path d="M 154 70 C 210 20, 250 20, 306 70" fill="none" stroke="#43535F"
                 stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-          <text class="dg-note" x="230" y="24" text-anchor="middle">4 days later</text>
+          <text class="dg-note" x="230" y="24" text-anchor="middle">registered 7 days later</text>
 
           <!-- same VIN -->
           <path d="M 154 104 L 306 104" fill="none" stroke="#DCE2E8" stroke-width="1"/>
           <text class="dg-label" x="230" y="100" text-anchor="middle" style="fill:#7C8B98">same VIN</text>
 
           <text class="dg-note" x="230" y="160" text-anchor="middle" style="font-weight:600; fill:#121A23">
-            No re-inspection in Weber.
+            Never retested. Every prior test was in Davis.
           </text>
           <text class="dg-note" x="230" y="178" text-anchor="middle">
             Two records, two systems.
@@ -594,7 +597,8 @@ p { margin: 0; max-width: 62ch; }
           <div class="card-label">A rubric, not a model</div>
           <p style="font-size: var(--step--1); color: var(--ink-2); line-height: 1.5;">
             An analyst can always answer <em>"why is this one flagged?"</em> with a concrete
-            sentence naming the county, the dates and the station. Never "the model says so."
+            sentence naming the test county, the ZIP, the registration place, the dates and
+            the station. Never "the model says so."
             Every factor below is auditable in one file, and tunable.
           </p>
           <div class="buckets">
@@ -610,11 +614,11 @@ p { margin: 0; max-width: 62ch; }
         <div class="card-label">The scoring rubric</div>
         <div class="rubric">
           <div class="rubric-row"><span class="pts">+40</span><span>Registered after a fail, with no later passing test</span></div>
-          <div class="rubric-row"><span class="pts">+30</span><span>Failed here, passed in another county within 7 days</span></div>
+          <div class="rubric-row"><span class="pts">+30</span><span>ZIP moved to a non-I/M county within 90 days of a failed test</span></div>
           <div class="rubric-row"><span class="pts">+25</span><span>OBD verdict was <span class="mono">FAIL</span> on a test recorded as a pass</span></div>
           <div class="rubric-row"><span class="pts">+25</span><span>Check-engine light commanded on, but the test still passed</span></div>
           <div class="rubric-row"><span class="pts">+20</span><span>Catalyst monitor not ready (codes cleared before the test)</span></div>
-          <div class="rubric-row"><span class="pts">+15</span><span>Tested at one of the county's worst stations for flags</span></div>
+          <div class="rubric-row"><span class="pts">+15</span><span>Failed here, then passed at a station with a high flag rate</span></div>
           <div class="rubric-row"><span class="pts">+10</span><span>Duplicate or missing certificate number</span></div>
           <div class="rubric-row"><span class="pts">+10</span><span>Repeated fail/pass cycles on the same VIN</span></div>
           <div class="rubric-row"><span class="pts">+5</span><span>Vehicle profile with a known emissions-delete culture</span></div>
@@ -644,13 +648,14 @@ p { margin: 0; max-width: 62ch; }
       </div>
       <div class="agenda-row" style="--tone: var(--medium)">
         <span class="dot"></span>
-        <span class="t">Evasion Cases &amp; Stations</span>
-        <span class="d">Cross-county fail-then-pass cases, and the stations that keep turning up in them.</span>
+        <span class="t">Registration Evasion</span>
+        <span class="d">Vehicles that failed here and registered where no test is required, mapped by fail county and pass county.</span>
       </div>
       <div class="agenda-row" style="--tone: var(--low)">
         <span class="dot"></span>
         <span class="t">Unknown Outcomes</span>
-        <span class="d">Tests that never resolved to a pass or a fail.</span>
+        <span class="d">Tests that never resolved to a pass or a fail, held apart from the
+          central and online renewals (MVCC, REX) that carry no station or certificate by design.</span>
       </div>
     </div>
 
