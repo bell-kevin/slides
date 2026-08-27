@@ -31,7 +31,7 @@
   --rule:       #DCE2E8;
   --rule-2:     #EDF0F3;
 
-  --accent:     #E08A00;   /* MIL amber — the check-engine telltale */
+  --accent:     #E08A00;   /* MIL amber, the check-engine telltale */
   --accent-ink: #8A5300;
   --accent-tint:#FFF4E0;
 
@@ -91,7 +91,7 @@ body {
   .slide[data-active="true"] > * { animation: none; }
 }
 
-/* Severity rail — color encodes the slide's role, drawn from the
+/* Severity rail: color encodes the slide's role, drawn from the
    dashboard's own bucket scale. */
 .rail {
   position: fixed;
@@ -205,7 +205,7 @@ p { margin: 0; max-width: 62ch; }
   align-items: start;
 }
 
-/* Numbered failure modes — a real typed list of three outcomes */
+/* Numbered failure modes: a real typed list of three outcomes */
 .modes { display: flex; flex-direction: column; gap: clamp(0.7rem, 1.3vw, 1.15rem); list-style: none; margin: 0; padding: 0; }
 .modes li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.9em; align-items: start; }
 .modes .badge {
@@ -450,7 +450,7 @@ p { margin: 0; max-width: 62ch; }
 
   .chrome { display: none !important; }
 
-  /* Viewport units have no useful meaning on paper — pin the scale. */
+  /* Viewport units have no useful meaning on paper; pin the scale. */
   :root {
     --step--1: 10.5pt;
     --step-0:  13pt;
@@ -470,20 +470,20 @@ p { margin: 0; max-width: 62ch; }
 
 <main class="deck" id="deck" aria-label="The Cars That Never Passed slideshow">
 
-  <!-- 1 — Title ----------------------------------------------------- -->
+  <!-- 1. Title ----------------------------------------------------- -->
   <section class="slide title-slide" data-rail="#E08A00" data-active="true">
     <div class="eyebrow"><span class="tick"></span>The National Center for Automotive Science &amp; Technology</div>
     <h1>The cars that never passed.</h1>
     <div class="title-rule"></div>
     <p class="lede">Cross-referencing twenty million emissions inspections against the state's
-       vehicle registration record — to find the vehicles that failed, and got on the road anyway.</p>
+       vehicle registration record, to find the vehicles that failed, and got on the road anyway.</p>
     <div class="byline">
       <span><b>NCAST</b></span>
       <span class="dim">August 2026</span>
     </div>
   </section>
 
-  <!-- 2 — Team ------------------------------------------------------ -->
+  <!-- 2. Team ------------------------------------------------------ -->
   <section class="slide" data-rail="#546E7A">
     <div class="slide-head">
       <div class="eyebrow"><span class="tick"></span>Who built this</div>
@@ -492,13 +492,12 @@ p { margin: 0; max-width: 62ch; }
     <div class="team" id="team"></div>
   </section>
 
-  <!-- 3 — Problem --------------------------------------------------- -->
+  <!-- 3. Problem --------------------------------------------------- -->
   <section class="slide" data-rail="#B71C1C">
     <div class="slide-head">
       <div class="eyebrow"><span class="tick"></span>The problem</div>
       <h2>A failed test isn't the end of the story.</h2>
-      <p class="lede">Utah requires an emissions inspection in five counties. The counties next door don't.
-         When a vehicle fails, three things can happen next — and until now, nobody could see any of them.</p>
+      <p class="lede">Utah requires an emissions inspection in five counties.</p>
     </div>
 
     <div class="cols">
@@ -507,8 +506,8 @@ p { margin: 0; max-width: 62ch; }
           <span class="badge">01</span>
           <div>
             <div class="mode-t">It gets registered anyway.</div>
-            <div class="mode-d">Failed in Weber. No later passing test on record. Re-registered
-              in a county with no I/M requirement — legally on the road, still dirty.</div>
+            <div class="mode-d">Failed in Weber. Then registered with no new passing
+              emission test.</div>
           </div>
         </li>
         <li style="--tone: var(--high)">
@@ -516,15 +515,15 @@ p { margin: 0; max-width: 62ch; }
           <div>
             <div class="mode-t">It "passes" somewhere else.</div>
             <div class="mode-d">Fails at one station, then passes at a station in a different
-              county days later — with no repair in between. County-hopping for a certificate.</div>
+              county days later.</div>
           </div>
         </li>
         <li style="--tone: var(--medium)">
           <span class="badge">03</span>
           <div>
             <div class="mode-t">It simply disappears.</div>
-            <div class="mode-d">A test that aborts or rejects and never resolves. No pass,
-              no fail, no follow-up. The vehicle falls out of the record entirely.</div>
+            <div class="mode-d">A failed emission test, and then the vehicle disappears.
+              It falls out of the record entirely.</div>
           </div>
         </li>
       </ul>
@@ -532,9 +531,7 @@ p { margin: 0; max-width: 62ch; }
       <div class="card">
         <div class="card-label">Why it stayed invisible</div>
         <p style="font-size: var(--step--1); color: var(--ink-2); line-height: 1.5;">
-          Inspection data and registration data live in separate systems, with no shared key
-          anyone was querying. A county can see the tests it ran. It cannot see what the
-          vehicle did next — or what it did the week before, one county over.
+          Inspection data and registration data live in separate systems.
         </p>
         <svg class="diagram" viewBox="0 0 460 190" role="img"
              aria-label="A vehicle fails inspection in Weber County, then passes four days later in a neighboring county.">
@@ -560,10 +557,10 @@ p { margin: 0; max-width: 62ch; }
           <text class="dg-label" x="230" y="100" text-anchor="middle" style="fill:#7C8B98">same VIN</text>
 
           <text class="dg-note" x="230" y="160" text-anchor="middle" style="font-weight:600; fill:#121A23">
-            No repair. No re-inspection in Weber.
+            No re-inspection in Weber.
           </text>
           <text class="dg-note" x="230" y="178" text-anchor="middle">
-            Two records, two systems, never compared.
+            Two records, two systems.
           </text>
 
           <defs>
@@ -576,13 +573,13 @@ p { margin: 0; max-width: 62ch; }
     </div>
   </section>
 
-  <!-- 4 — Solution -------------------------------------------------- -->
+  <!-- 4. Solution -------------------------------------------------- -->
   <section class="slide" data-rail="#1565C0">
     <div class="slide-head">
       <div class="eyebrow"><span class="tick"></span>The solution</div>
       <h2>Join the records. Then explain the verdict.</h2>
       <p class="lede">One database keyed on VIN, holding both feeds. A transparent rule engine
-         scores every flagged vehicle — and every point it earns maps to a sentence a person can read.</p>
+         scores every flagged vehicle, and every point it earns maps to a sentence a person can read.</p>
     </div>
 
     <div class="cols">
@@ -594,10 +591,10 @@ p { margin: 0; max-width: 62ch; }
         </div>
 
         <div class="card">
-          <div class="card-label">Not a model — a rubric</div>
+          <div class="card-label">A rubric, not a model</div>
           <p style="font-size: var(--step--1); color: var(--ink-2); line-height: 1.5;">
             An analyst can always answer <em>"why is this one flagged?"</em> with a concrete
-            sentence naming the county, the dates and the station — never "the model says so."
+            sentence naming the county, the dates and the station. Never "the model says so."
             Every factor below is auditable in one file, and tunable.
           </p>
           <div class="buckets">
@@ -615,7 +612,7 @@ p { margin: 0; max-width: 62ch; }
           <div class="rubric-row"><span class="pts">+40</span><span>Registered after a fail, with no later passing test</span></div>
           <div class="rubric-row"><span class="pts">+30</span><span>Failed here, passed in another county within 7 days</span></div>
           <div class="rubric-row"><span class="pts">+25</span><span>OBD verdict was <span class="mono">FAIL</span> on a test recorded as a pass</span></div>
-          <div class="rubric-row"><span class="pts">+25</span><span>Check-engine light commanded on — test still passed</span></div>
+          <div class="rubric-row"><span class="pts">+25</span><span>Check-engine light commanded on, but the test still passed</span></div>
           <div class="rubric-row"><span class="pts">+20</span><span>Catalyst monitor not ready (codes cleared before the test)</span></div>
           <div class="rubric-row"><span class="pts">+15</span><span>Tested at one of the county's worst stations for flags</span></div>
           <div class="rubric-row"><span class="pts">+10</span><span>Duplicate or missing certificate number</span></div>
@@ -626,7 +623,7 @@ p { margin: 0; max-width: 62ch; }
     </div>
   </section>
 
-  <!-- 5 — Handoff --------------------------------------------------- -->
+  <!-- 5. Handoff --------------------------------------------------- -->
   <section class="slide" data-rail="#E08A00">
     <div class="slide-head">
       <div class="eyebrow"><span class="tick"></span>The dashboard</div>
@@ -643,7 +640,7 @@ p { margin: 0; max-width: 62ch; }
       <div class="agenda-row" style="--tone: var(--high)">
         <span class="dot"></span>
         <span class="t">Failed, then Registered</span>
-        <span class="d">Vehicles registered after a failed test with no later pass — and the county it was registered in.</span>
+        <span class="d">Vehicles registered after a failed test with no later pass, and the county it was registered in.</span>
       </div>
       <div class="agenda-row" style="--tone: var(--medium)">
         <span class="dot"></span>
